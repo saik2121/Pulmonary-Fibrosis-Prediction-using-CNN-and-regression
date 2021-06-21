@@ -1,0 +1,80 @@
+<header>
+
+</header>
+<!-- //top-bar -->
+
+<!-- header 2 -->
+<div id="home">
+	<!-- navigation -->
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-steel fixed-navi">
+			<div class="container">
+				<!-- logo -->
+				<h1>
+					<a class="navbar-brand font-weight-bold font-italic" href="{% url 'home' %}">
+						<span>M</span>edic
+						<i class="fas fa-syringe"></i>
+					</a>
+				</h1>
+				<!-- //logo -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-lg-auto">
+						<li class="nav-item mt-lg-0 mt-3">
+							<a class="nav-link" href="{% url 'home' %}">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+
+						<li class="nav-item dropdown nav-item  mx-lg-3 my-lg-0 my-3">
+							<a class="nav-link" href="{% url 'pfp' %}" aria-haspopup="true" aria-expanded="false">
+								Disease Prediction
+							</a>
+
+						</li>
+
+
+
+
+						{% if request.user.is_authenticated %}
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								{{ request.user.first_name }}
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+								<a class="dropdown-item " href="{% url 'doctor-profile-update' %}"> EDIT PROFILE</a>
+								<a class="dropdown-item " href="{% url 'logout' %}">LOGOUT</a>
+
+
+							</div>
+						</li>
+
+
+						{% else %}
+						<li class="nav-item dropdown nav-item  mx-lg-3 my-lg-0 my-3">
+							<a class="nav-link" href="{% url 'doctor-register' %}" aria-haspopup="true"
+								aria-expanded="false">
+								Register
+							</a>
+
+						</li>
+					</ul>
+					<a href="{% url 'login' %}" class="login-button ml-lg-5 mt-lg-0 mt-3 mb-lg-0 mb-3">
+						<i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+				    <a href="/admin/" class="login-button ml-lg-5 mt-lg-0 mt-3 mb-lg-0 mb-3">
+						<i class="fas fa-sign-in-alt mr-2"></i>ADMIN Login</a>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
+	</div>
+
+</div>
+<!-- //header 2 -->

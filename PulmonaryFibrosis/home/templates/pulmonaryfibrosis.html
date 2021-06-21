@@ -1,0 +1,172 @@
+{%extends 'base.html'%} 
+{% block title %} Pulmonary Fibrosis Prediction  {% endblock %}
+{%block content%}
+	<!-- banner 2 -->
+	<div class="inner-banner-w3ls">
+		<div class="container">
+
+		</div>
+		<!-- //banner 2 -->
+	</div>
+	<!-- page details -->
+	<div class="breadcrumb-agile">
+		<div aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/">Home</a>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">Pulmonary Fibrosis Prediction</li>
+			</ol>
+		</div>
+	</div>
+	<!-- //page details -->
+
+<!-- contact -->
+<div class="agileits-contact">
+  <div class="py-xl-5 py-lg-3">
+    <div class="w3ls-titles text-center mb-5">
+      <h3 class="title">Pulmonary Fibrosis Prediction</h3>
+      <span>
+        <i class="fas fa-user-md"></i>
+      </span>
+      <hr/>
+      {% if context %}
+      <div>
+        <a href="{% url 'gp' %}" style="font-size:25px;position:absolute;right:170px;top:620px;color:red;text-decoration:underline">Check Disease Progression here</a>
+        <pre class="title display-4 text-center" style="font-family: 'Times New Roman'">
+        FVC Value : {{ context }}
+        </pre>
+        
+      </div>
+      
+      {% endif %}
+    </div>
+    <div class="d-flex">
+      <div class="col-lg-5 w3_agileits-contact-left">
+      </div>
+      <div class="col-lg-7 contact-right-w3l">
+        <h5 class="title-w3 text-center mb-5">Get In Touch</h5>
+        <!-- start from here -->
+       
+        <form class="row" method="POST" action="{% url 'pfp' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="col-md-6">
+            <label style="color: black;" >Patient</label>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="patient"
+                name="patient"
+                placeholder="Patient ID"
+                required
+              />
+            </div>
+            <label style="color: black;" >FVC Week</label>
+            <div class="form-group">
+              <input
+                type="number"
+                step="1"
+                class="form-control"
+                id="fweeks"
+                min="-12",
+                max="133",
+                name="fweeks"
+                placeholder="Weeks"
+                required
+              />
+            </div>
+            <label style="color: black;" >FVC</label>
+            <div class="form-group">
+              <input
+                type="number"
+                step="1"
+                class="form-control"
+                id="fvc"
+                name="fvc"
+                min="0"
+                placeholder="FVC in ml"
+                required
+              />
+            </div>
+            <label style="color: black;" >Percent</label>
+            <div class="form-group">      
+              <input  
+                type="number"
+                step=".01"
+                class="form-control"
+                id="percent"
+                min="0"
+                max="100"
+                name="percent"
+                placeholder="Percent"
+                required
+              />
+            </div>
+            <label style="color: black;" >Age</label>
+            <div class="form-group">   
+              <input
+                type="number"
+                step="1"
+                class="form-control"
+                id="age"
+                min="1"
+                name="age"
+                placeholder="Age"
+                required
+              />
+            </div>
+            <label style="color: black;" >Prediction Week</label>
+            <div class="form-group">
+              <input
+                type="number"
+                step="1"
+                class="form-control"
+                id="pweeks"
+                min="-12",
+                max="134",
+                name="pweeks"
+                placeholder="Weeks"
+                required
+              />
+            </div>
+          </div>
+         
+          <div class="col-md-4">
+            <label style="color: black;">Sex</label>
+            <div class="form-group">
+               <select name="sex" id="sex" class="form-control" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+              </select>
+            </div>
+            <label style="color: black;" >SmokingStatus</label>
+            <div class="form-group">
+              <select name="smokingstatus" id="smokingstatus" class="form-control" required>
+                    <option value="Ex-smoker">Ex-smoker</option>
+                    <option value="Never smoked">Never smoked</option>
+                    <option value="Currently smokes">Currently smokes</option>
+              </select>
+            </div>
+            <label style="color: black;">CT Scan Image</label>
+           <div class="input-group">
+              <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01"
+                 aria-describedby="inputGroupFileAddon01" name='image_ct'>
+               <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+           </div>
+           </div>
+            <br>
+            <button type="submit" class="btn-lg btn-block btn btn-primary mb-5">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //contact -->
+
+
+{% endblock %}
